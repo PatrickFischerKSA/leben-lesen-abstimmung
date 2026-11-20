@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#17233f">
+  <title>LEBEN LESEN · Abstimmung</title>
+  <meta name="description" content="Publikums- und Juryabstimmung für das FMS-Kreativprojekt LEBEN LESEN.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar"><a href="./">FMS<span>/</span>LEBEN</a><nav><button data-view="vote">Abstimmen</button><button data-view="jury">Jury</button><button data-view="admin">Leitung</button></nav></header>
+  <main>
+    <section class="hero">
+      <div><p class="eyebrow">Publikums- und Juryabstimmung · 18. Dezember</p><h1>Was bleibt<br><em>hängen?</em></h1><p class="lead">Bewerte jedes Werk aus vier Perspektiven. Nicht die aufwendigste Arbeit gewinnt, sondern jene, deren Gedanke, Form und Wirkung gemeinsam tragen.</p></div>
+      <aside><img src="qr.svg" alt="QR-Code zu dieser Abstimmungsseite"><div><span id="event-status" class="status">Status wird geladen</span><strong>1–5 Punkte</strong><small>pro Kriterium · maximal 20 pro Werk</small></div></aside>
+    </section>
+
+    <section id="notice" class="notice" hidden></section>
+
+    <section id="vote-view" class="panel view">
+      <div class="panel-head"><div><p class="eyebrow" id="vote-role">Publikumsstimme</p><h2>Ein Werk auswählen.</h2></div><p>Du kannst deine Wertung bis zum Schliessen der Abstimmung erneut öffnen und verändern. Pro Gerät und Werk zählt genau eine Stimme.</p></div>
+      <div id="team-picker" class="team-picker" aria-label="Team auswählen"></div>
+      <form id="vote-form" hidden>
+        <div class="selected-work"><button type="button" id="back-to-teams">Andere Arbeit wählen</button><span id="selected-number"></span><h3 id="selected-title"></h3></div>
+        <div id="criteria" class="criteria"></div>
+        <div class="submit-row"><p>Bitte beantworte alle vier Fragen. Deine Einzelwertungen bleiben anonym.</p><button type="submit">Wertung speichern</button></div>
+      </form>
+      <div id="vote-success" class="success" hidden><span>Gespeichert</span><h3>Danke für deine Stimme.</h3><p>Du kannst jetzt die nächste Arbeit bewerten oder deine Wertung nochmals öffnen.</p><button type="button" id="next-team">Nächstes Werk wählen</button></div>
+    </section>
+
+    <section id="jury-view" class="panel view" hidden>
+      <div class="login-card"><p class="eyebrow">Geschützter Zugang</p><h2>Jury</h2><p>Jedes Jurymitglied verwendet ein eigenes Kürzel oder seinen Namen. Dadurch bleiben die Wertungen getrennt nachvollziehbar.</p><form id="jury-login"><label>Name oder Kürzel<input name="name" required minlength="2" autocomplete="name"></label><label>Jurypasswort<input name="password" type="password" required autocomplete="current-password"></label><button>Juryraum öffnen</button></form></div>
+    </section>
+
+    <section id="admin-view" class="panel view" hidden>
+      <div id="admin-login-card" class="login-card"><p class="eyebrow">Lehrpersonenbereich</p><h2>Regie</h2><p>Hier wird die Abstimmung geöffnet, geschlossen und kontrolliert. Zwischenresultate bleiben für das Publikum unsichtbar.</p><form id="admin-login"><label>Passwort<input name="password" type="password" required autocomplete="current-password"></label><button>Regie öffnen</button></form></div>
+      <div id="admin-dashboard" hidden>
+        <div class="control-head"><div><p class="eyebrow">Live-Steuerung</p><h2>Abstimmungsregie</h2></div><button id="refresh-results" class="secondary">Aktualisieren</button></div>
+        <div class="switches">
+          <label><input id="audience-open" type="checkbox"><span><b>Publikum</b><small>Abstimmung geöffnet</small></span></label>
+          <label><input id="jury-open" type="checkbox"><span><b>Jury</b><small>Abstimmung geöffnet</small></span></label>
+          <label><input id="results-visible" type="checkbox"><span><b>Resultate</b><small>öffentlich freigeben</small></span></label>
+        </div>
+        <div class="admin-actions"><button id="save-settings">Status speichern</button><button id="export-csv" class="secondary">CSV exportieren</button></div>
+        <div id="results" class="results"></div>
+      </div>
+    </section>
+
+    <section class="method">
+      <div><p class="eyebrow">Gemeinsame Bewertung</p><h2>Zwei Stimmen.<br>Ein Ergebnis.</h2></div>
+      <div class="formula"><article><span>Publikum</span><strong>50 %</strong><p>Alle Stimmen werden pro Werk gemittelt.</p></article><i>+</i><article><span>Jury</span><strong>50 %</strong><p>Alle Jurystimmen werden pro Werk gemittelt.</p></article></div>
+    </section>
+  </main>
+  <footer><span>LEBEN LESEN · FMS Kreativprojekt</span><a href="https://leben-lesen-fms.patrickoliverfischer.chatgpt.site/#abstimmung">Kriterien und Projektseite</a></footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
