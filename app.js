@@ -12,10 +12,15 @@ const completed = () => JSON.parse(localStorage.getItem(`ll_done_${mode}`) || "[
 const markCompleted = team => { const all=new Set(completed());all.add(team);localStorage.setItem(`ll_done_${mode}`,JSON.stringify([...all])); };
 
 async function api(path, options={}){
-  const response=await fetch(API+path,{...options,headers:{"content-type":"application/json",...(options.headers||{})}});
-  const data=await response.json().catch(()=>({error:"Ungültige Serverantwort."}));
-  if(!response.ok) throw new Error(data.error||"Anfrage fehlgeschlagen.");
-  return data;
+  for(let attempt=0;attempt<3;attempt++){
+    try{
+      const response=await fetch(API+path,{...options,headers:{"content-type":"application/json",...(options.headers||{})}});
+      const data=await response.json().catch(()=>({error:"Ungültige Serverantwort."}));
+      if(response.ok)return data;
+      if(![429,500,502,503,504].includes(response.status)||attempt===2)throw new Error(data.error||"Anfrage fehlgeschlagen.");
+    }catch(error){if(attempt===2)throw error}
+    await new Promise(resolve=>setTimeout(resolve,300*(2**attempt)+Math.random()*200));
+  }
 }
 function message(text,error=false){const el=$("notice");el.textContent=text;el.hidden=!text;el.style.background=error?"#ff735d":"#38a996";if(text)setTimeout(()=>el.hidden=true,6000)}
 async function loadState(){try{state=await api("/voting-state");renderTeams();updateStatus();}catch(e){message("Die Abstimmung kann den Server momentan nicht erreichen.",true)}}
