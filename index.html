@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar"><a href="./">FMS<span>/</span>LEBEN</a><nav><button data-view="vote">Abstimmen</button><button data-view="jury">Jury</button><button data-view="admin">Leitung</button></nav></header>
+  <header class="topbar"><a href="./">FMS<span>/</span>LEBEN</a><nav><button data-view="vote">Abstimmen</button><button data-view="podium">Podium</button><button data-view="jury">Jury</button><button data-view="admin">Leitung</button></nav></header>
   <main>
     <section class="hero">
       <div><p class="eyebrow">Publikums- und Juryabstimmung · 18. Dezember</p><h1>Was bleibt<br><em>hängen?</em></h1><p class="lead">Bewerte jedes Werk aus vier Perspektiven. Nicht die aufwendigste Arbeit gewinnt, sondern jene, deren Gedanke, Form und Wirkung gemeinsam tragen.</p></div>
@@ -40,10 +40,22 @@
         <div class="switches">
           <label><input id="audience-open" type="checkbox"><span><b>Publikum</b><small>Abstimmung geöffnet</small></span></label>
           <label><input id="jury-open" type="checkbox"><span><b>Jury</b><small>Abstimmung geöffnet</small></span></label>
-          <label><input id="results-visible" type="checkbox"><span><b>Resultate</b><small>öffentlich freigeben</small></span></label>
         </div>
         <div class="admin-actions"><button id="save-settings">Status speichern</button><button id="export-csv" class="secondary">CSV exportieren</button></div>
+        <div class="podium-controls"><div><p class="eyebrow">Schlusspodium steuern</p><h3>Die drei Auszeichnungen einzeln enthüllen.</h3><p>Das Podium wird nur gezeigt, wenn Publikum und Jury geschlossen sind.</p></div><div><button data-podium-step="0">Podium verbergen</button><button data-podium-step="1">3. Platz zeigen</button><button data-podium-step="2">2. Platz zeigen</button><button data-podium-step="3">1. Platz zeigen</button></div></div>
         <div id="results" class="results"></div>
+      </div>
+    </section>
+
+    <section id="podium-view" class="podium-view view" hidden>
+      <div class="podium-curtain" id="podium-curtain"><p class="eyebrow">LEBEN LESEN · Das Finale</p><h2>Die Entscheidung<br>ist gefallen.</h2><p>Die drei bestprämierten Werke werden von der Leitung nacheinander enthüllt.</p></div>
+      <div class="podium-stage" id="podium-stage" hidden>
+        <header><p class="eyebrow">Publikum 50 % · Jury 50 %</p><h2>Das Schlusspodium</h2></header>
+        <div class="podium-places">
+          <article class="podium-place third" data-place="3"><div class="winner-copy"><span>3. Platz</span><strong>?</strong><p>Wird gleich enthüllt</p></div><div class="plinth">3</div></article>
+          <article class="podium-place first" data-place="1"><div class="winner-copy"><span>1. Platz</span><strong>?</strong><p>Wird gleich enthüllt</p></div><div class="plinth">1</div></article>
+          <article class="podium-place second" data-place="2"><div class="winner-copy"><span>2. Platz</span><strong>?</strong><p>Wird gleich enthüllt</p></div><div class="plinth">2</div></article>
+        </div>
       </div>
     </section>
 
