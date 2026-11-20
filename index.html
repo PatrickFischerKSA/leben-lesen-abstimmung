@@ -24,6 +24,17 @@
       <form id="vote-form" hidden>
         <div class="selected-work"><button type="button" id="back-to-teams">Andere Arbeit wählen</button><span id="selected-number"></span><h3 id="selected-title"></h3></div>
         <div id="criteria" class="criteria"></div>
+        <section class="rating-scale" aria-labelledby="rating-scale-title">
+          <h3 id="rating-scale-title">Bewertungsskala</h3>
+          <div class="scale-table" role="table" aria-label="Bewertungsskala von 1 bis 5 Punkten">
+            <div class="scale-head" role="row"><b role="columnheader">Punkte</b><b role="columnheader">Bewertung</b><b role="columnheader">Beschreibung</b></div>
+            <div role="row"><strong role="cell">5</strong><span role="cell">Herausragend</span><span role="cell">Besonders überzeugend, eindrücklich und gelungen</span></div>
+            <div role="row"><strong role="cell">4</strong><span role="cell">Sehr gut</span><span role="cell">Überzeugend, mit nur kleinen Schwächen</span></div>
+            <div role="row"><strong role="cell">3</strong><span role="cell">Gut</span><span role="cell">Insgesamt gelungen, mit erkennbarem Verbesserungspotenzial</span></div>
+            <div role="row"><strong role="cell">2</strong><span role="cell">Teilweise gelungen</span><span role="cell">Gute Ansätze, aber deutliche Schwächen</span></div>
+            <div role="row"><strong role="cell">1</strong><span role="cell">Wenig gelungen</span><span role="cell">Die Kriterien werden kaum erfüllt</span></div>
+          </div>
+        </section>
         <div class="submit-row"><p>Bitte beantworte alle vier Fragen. Deine Einzelwertungen bleiben anonym.</p><button type="submit">Wertung speichern</button></div>
       </form>
       <div id="vote-success" class="success" hidden><span>Gespeichert</span><h3>Danke für deine Stimme.</h3><p>Du kannst jetzt die nächste Arbeit bewerten oder deine Wertung nochmals öffnen.</p><button type="button" id="next-team">Nächstes Werk wählen</button></div>
